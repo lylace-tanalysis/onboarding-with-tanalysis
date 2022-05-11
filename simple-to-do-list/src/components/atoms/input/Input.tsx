@@ -1,10 +1,24 @@
-import React from "react";
+import React from 'react';
 
-const Input: React.FC<{}> = () => {
-	return (
-		<input>
-		</input>
-	)
+export interface InputProps {
+	className?: string;
+	value?: string;
+	onChange?: React.ChangeEventHandler<HTMLInputElement>;
+	onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 }
 
-export default Input
+const Input: React.FC<InputProps> = ({
+  className = '',
+  value = '',
+  onChange,
+  onKeyDown,
+}) => (
+  <input
+    className={className}
+    value={value}
+    onChange={onChange}
+    onKeyDown={onKeyDown}
+		/>
+);
+
+export default Input;

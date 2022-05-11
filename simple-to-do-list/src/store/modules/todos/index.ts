@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface Todo {
   id: string;
@@ -8,10 +8,10 @@ export interface Todo {
 
 const initialState = [] as Todo[];
 
-const getId = (description: string) => (Date.now() + description.slice(-5))
+const getId = (description: string) => (Date.now() + description.slice(-5));
 
 const todoSlice = createSlice({
-  name: "todos",
+  name: 'todos',
   initialState,
   reducers: {
     addTodo: {
@@ -32,7 +32,7 @@ const todoSlice = createSlice({
     },
     setTodoStatus(
       state,
-      action: PayloadAction<{ done: boolean; id: string }>
+      action: PayloadAction<{ done: boolean; id: string }>,
     ) {
       const index = state.findIndex((todo) => todo.id === action.payload.id);
       state[index].done = action.payload.done;
