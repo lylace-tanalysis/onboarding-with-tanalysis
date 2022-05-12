@@ -1,29 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useAppSelector } from './hooks';
+import TodoInput from './components/molecules/todo-input';
+import TodoList from './components/molecules/todo-list';
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
+  const todos = useAppSelector((state) => state.todos);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <h1 className="text-3xl font-bold underline">
-          Hello world! -----tailwinds
-        </h1>
-      </header>
+    <div className="App p-20 flex justify-center flex-col items-center bg-gray-100">
+      <h1 className="text-3xl font-bold underline">
+        Todo 리스트!
+      </h1>
+      <div className="p-5 w-full max-w-2xl">
+        <TodoInput></TodoInput>
+        <TodoList todoList={todos}></TodoList>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
