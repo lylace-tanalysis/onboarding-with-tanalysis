@@ -3,15 +3,13 @@ import Button, { ButtonProps } from '../../atoms/button/Button';
 import { Todo } from '../../../store/modules/todos';
 
 export interface TodoListItemViewProps {
-	descriptionClassName?: string;
 	todo: Todo;
 	onClick?: React.MouseEventHandler<HTMLDivElement>
 	deleteButtonProps: ButtonProps;
-	doneButtonProps: ButtonProps;
+	doneButtonProps: ButtonProps
 }
 
 const TodoListItemView: React.FC<TodoListItemViewProps> = ({
-  descriptionClassName = '',
   todo,
   onClick,
   deleteButtonProps,
@@ -20,13 +18,13 @@ const TodoListItemView: React.FC<TodoListItemViewProps> = ({
   <li
     className="flex justify-between gap-5 border-b border-indigo-500 mb-3"
 		>
-    <div className={descriptionClassName} onClick={onClick}>
+    <div className={todo.done ? "flex-grow line-through" : "flex-grow"} onClick={onClick}>
       {todo.description}
     </div>
     {
 			 todo.done
-			 ? <Button {...deleteButtonProps} />
-			 : <Button {...doneButtonProps} />
+			 ? <Button className="min-w-fit" {...deleteButtonProps} />
+			 : <Button className="min-w-fit" {...doneButtonProps} />
 		 }
   </li>
 );

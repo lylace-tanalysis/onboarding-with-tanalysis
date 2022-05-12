@@ -13,8 +13,8 @@ const TodoInputView: React.FC<TodoInputViewProps> = ({
   buttonProps,
 }) => (
   <div className="flex justify-between">
-    <Input {...inputProps} />
-    <Button {...buttonProps} />
+    <Input className="w-4/5" {...inputProps} />
+    <Button className="w-1/5" {...buttonProps} />
   </div>
 );
 
